@@ -25,6 +25,8 @@ app.use(express.static('public'))
 
 app.use("/targets", targets);
 
+app.get("/", (req, res) => res.send("Hello World"));
+
 const upload = multer({ dest: 'uploads/' });
 
 app.listen(PORT, () => {
