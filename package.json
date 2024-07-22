@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "vercel-build": "npm install pg --save"
   },
   "keywords": [],
   "author": "",
