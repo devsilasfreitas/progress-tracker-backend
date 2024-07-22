@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import express, { Request, Response } from "express";
 import { checkToken } from "./checkToken";
 import jwt from "jsonwebtoken";

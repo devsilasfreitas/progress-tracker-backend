@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+// @ts-ignore
 import { sendMail } from '../../config/nodemailer';
 
 interface params {

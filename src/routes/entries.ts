@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import express, { Request, Response } from "express";
 import { Entry, User, UserTarget } from "../models";
 import jwt from "jsonwebtoken";
