@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import fs from 'node:fs';
-import { sendMail } from '../../config/nodemailer';
+import { sendMail } from '../../../config/nodemailer';
 import path from 'node:path';
 
 interface params {
