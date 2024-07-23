@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
-    "build": "tsc && copyfiles -u 1 'src/**/*' '!src/**/*.ts' 'dist'",
+    "build": "tsc && copyfiles -e 'src/**/*.ts' 'src/**/*' 'dist'",
     "start": "node dist/server.js",
     "vercel-build": "npm install pg --save"
   },
