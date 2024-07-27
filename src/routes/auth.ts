@@ -41,18 +41,16 @@ auth.post('/signup', upload.single('profilePhoto'), async (req: Request, res: Re
         if (firstName.length < 2 || lastName.length < 2) {
             return res.status(400).json({ err: 'Nome muito curto. Insira pelo menos 2 letras' });
         }
-
-        if (user) {
-            const newUser = await user.update({
+        const newUser = user ?
+            await user.update({
                 firstName,
                 lastName,
                 email,
                 password,
                 provider: 'both',
                 theme: 'light'
-            });
-        } else {
-            const newUser = await User.create({
+            }) :
+            await User.create({
                 firstName,
                 lastName,
                 email,
@@ -60,7 +58,6 @@ auth.post('/signup', upload.single('profilePhoto'), async (req: Request, res: Re
                 provider: 'email',
                 theme: 'light'
             });
-        }
 
         if (!newUser) return;
 
