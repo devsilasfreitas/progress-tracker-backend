@@ -1,31 +1,31 @@
 "use strict";
+require('dotenv').config();
+console.log(process.env)
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendMail = void 0;
 const nodemailer_1 = __importDefault(require("nodemailer"));
-const sendMail = ({ to, subject, content }) => {
+const sendMail = async ({ to, subject, content }) => {
     const transporter = nodemailer_1.default.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
         auth: {
-            type: 'OAuth2',
             user: process.env.MAIL_USERNAME,
-            pass: process.env.MAIL_PASSWORD,
-            clientId: process.env.OAUTH_CLIENTID,
-            clientSecret: process.env.OAUTH_CLIENT_SECRET,
-            refreshToken: process.env.OAUTH_REFRESH_TOKEN
-        },
-        service: "gmail"
+            pass: process.env.MAIL_PASSWORD
+        }
     });
     const mailOptions = {
-        from: 'progresstrackerapplication@gmail.com',
+        from: process.env.MAIL_USERNAME,
         to,
         subject,
         html: content
     };
-    transporter.sendMail(mailOptions, (err, data) => {
+    await transporter.sendMail(mailOptions, (err, data) => {
         if (err) {
-            throw new Error(err.message);
+            console.error(err);
         }
         else {
             return data;
